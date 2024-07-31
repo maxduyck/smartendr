@@ -5,9 +5,10 @@ import { splitTables } from './utils';
 
 type Props = {
   children: JSX.Element | null;
+  isTest?: boolean;
 };
 
-type State = {
+export type State = {
   isError: boolean;
   isReady: boolean;
   tables: Table[];
@@ -21,7 +22,23 @@ const initialState: State = {
   tables: [],
 };
 
-const DataProvider = ({ children }: Props) => {
+const mockState = {
+  isError: false,
+  isReady: true,
+  tables: [
+    {
+      name: 'DELIVERY',
+      products: [
+        { id: 40956, name: 'Bier', quantity: 4 },
+        { id: 38365, name: 'Coca Cola', quantity: 3 },
+        { id: 38288, name: 'Homemade Mini Loempias', quantity: 6 },
+      ],
+      sum: 86.4,
+    }
+  ],
+};
+
+const DataProvider = ({ children, isTest = false }: Props) => {
 
   const [state, setData] = useState<State>(initialState);
 
@@ -46,6 +63,8 @@ const DataProvider = ({ children }: Props) => {
 
       const tables: Table[] = splitTables(orders);
 
+      console.log('tables', tables);
+      
       setData({
         isError: false,
         isReady: true,
@@ -71,7 +90,11 @@ const DataProvider = ({ children }: Props) => {
   }
 
   useEffect(() => {
-    getData();
+    if (isTest) {
+      setData(mockState);
+    } else {
+      getData();
+    }
   }, []);
 
   return (

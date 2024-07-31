@@ -5,11 +5,6 @@ import { Styled } from './style';
 
 const Grid = () => {
   const data = useData();
-
-  // const sortedTables = data?.tables?.length
-  //   ? data.tables.sort((a, b) => a.name.localeCompare(b.name))
-  //   : []
-
   return (
     <Styled.Container>
       {data?.tables?.map(({ name, products, sum }) => (

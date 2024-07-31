@@ -16,7 +16,7 @@ const Table = ({ name, products, sum }: Props) => (
     </Styled.List>
     <Styled.Sum>
       <span>Total:</span>
-      <span>{sum.toFixed(2)}€</span>
+      <span data-test-id="sum">{sum.toFixed(2)}€</span>
     </Styled.Sum>
   </Styled.Card>
 );
