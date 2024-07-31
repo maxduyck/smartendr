@@ -62,7 +62,7 @@ declare global {
 
   type Table = {
     name: string;
-    products: Product[];
+    products: FlatOrder[];
     sum: number;
   }
 }

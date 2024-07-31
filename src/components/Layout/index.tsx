@@ -1,47 +1,33 @@
 import React from 'react';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import { useData } from '../../contexts/data';
 import Table from '../Table';
 import { Styled } from './style';
 
-type Props = {
-  orders: Order[];
-};
+const Layout = () => {
+  const data = useData();
 
-const Layout = ({ orders }: Props) => {
-  const tables: {
-    [key: string]: {
-      products: Product[];
-      sum: number;
-    };
-  } = {};
-
-  orders.forEach((item) => {
-    const { products, table_name, total } = item;
-    if (!products?.length) return;
-    const cleanProducts = products.filter(({ id }) => !!id);
-    if (!cleanProducts.length) return;
-
-    if (!tables[table_name]) {
-      tables[table_name] = { products: cleanProducts, sum: Number(total) };
-    }
-    tables[table_name] = {
-      products: [...tables[table_name].products, ...cleanProducts],
-      sum: tables[table_name].sum + Number(total),
-    }
-  })
-  console.log('tables', tables);
-
-  return (
+  return (<>
+    <Styled.Header>
+      Pending orders: {data?.tables.length}
+    </Styled.Header>
     <Styled.Container>
-      {Object.keys(tables).map((key) => (
-        <Table
-          key={key}
-          name={key}
-          products={tables[key].products}
-          sum={tables[key].sum}
-        />
-      ))}
+      <ResponsiveMasonry
+        columnsCountBreakPoints={{ 340: 1, 640: 2, 940: 3, 1240: 4 }}
+      >
+        <Masonry gutter="20">
+          {data?.tables.map(({ name, products, sum }) => (
+            <Table
+              key={name}
+              name={name}
+              products={products}
+              sum={sum}
+            />
+          ))}
+        </Masonry>
+      </ResponsiveMasonry>
     </Styled.Container>
-  );
+  </>);
 };
 
 export default Layout;

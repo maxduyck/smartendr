@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
 
 export const Styled = {
-  Container: styled.div`
+  Card: styled.div`
     background-color: #ffffff;
+    border: 1px solid #e9eaf4;
     border-radius: 5px;
-    display: inline-block;
-    margin: 0 10px;
-    vertical-align: top;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .5);
+    display: block;
+    margin: 0 10px 20px;
     width: 300px;
   `,
   Label: styled.span`
@@ -20,7 +21,10 @@ export const Styled = {
     padding: .5em;
   `,
   Name: styled.div`
-    background-color: #ffffff;
+    background-color: #e9eaf4;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight: 700;
     padding: 15px 0;
     text-align: center;
   `,
@@ -28,7 +32,9 @@ export const Styled = {
     display: flex;
   `,
   Sum: styled.div`
-    background: #f0f0f0;
+    background-color: #f0f0f0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     display: flex;
     font-weight: 700;
     justify-content: space-between;
@@ -38,6 +44,6 @@ export const Styled = {
     display: block;
     margin-right: .5em;
     text-align: right;
-    width: 30px;
+    width: 20px;
   `,
 };
