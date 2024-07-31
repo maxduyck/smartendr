@@ -1,8 +1,16 @@
 import styled from '@emotion/styled';
 
+const headerHeight = '60px';
+
 export const Styled = {
-  Container: styled.div`
+  Body: styled.div`
+    bottom: 0;
+    left: 0;
+    overflow: auto;
     padding: 1em;
+    position: absolute;
+    right: 0;
+    top: ${headerHeight};
   `,
   Header: styled.div`
     align-items: center;
@@ -10,7 +18,7 @@ export const Styled = {
     color: #fff;
     display: flex;
     font-size: 20px;
-    height: 60px;
+    height: ${headerHeight};
     justify-content: center;
   `,
 };

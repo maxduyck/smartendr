@@ -6,8 +6,9 @@ export const Styled = {
     border: 1px solid #e9eaf4;
     border-radius: 5px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, .5);
-    display: block;
+    display: inline-block;
     margin: 0 10px 20px;
+    vertical-align: top;
     width: 300px;
   `,
   Label: styled.span`
