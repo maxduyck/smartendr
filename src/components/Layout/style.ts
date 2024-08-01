@@ -14,7 +14,7 @@ export const Styled = {
   `,
   Header: styled.div`
     align-items: center;
-    background-color: #333;
+    background-color: #474342;
     color: #fff;
     display: flex;
     font-size: 20px;
