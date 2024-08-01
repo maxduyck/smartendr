@@ -10,13 +10,13 @@ const Table = ({ name, products, sum }: Props) => (
       {products.map(({ name, quantity }) => (
         <Styled.Product key={name}>
           <Styled.Quantity>{quantity}</Styled.Quantity>
-          <Styled.Label>{name}</Styled.Label>
+          <Styled.Label data-test="product">{name}</Styled.Label>
         </Styled.Product>
       ))}
     </Styled.List>
     <Styled.Sum>
       <span>Total:</span>
-      <span data-test-id="sum">{sum.toFixed(2)}€</span>
+      <span data-test="sum">{sum.toFixed(2)}€</span>
     </Styled.Sum>
   </Styled.Card>
 );

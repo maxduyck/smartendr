@@ -3,15 +3,15 @@ import React, {
 } from 'react';
 import { splitTables } from './utils';
 
-type Props = {
-  children: JSX.Element | null;
-  isTest?: boolean;
-};
-
 export type State = {
   isError: boolean;
   isReady: boolean;
   tables: Table[];
+};
+
+type Props = {
+  children: JSX.Element | null;
+  mock?: State;
 };
 
 const DataContext = createContext<State | null>(null);
@@ -22,23 +22,7 @@ const initialState: State = {
   tables: [],
 };
 
-const mockState = {
-  isError: false,
-  isReady: true,
-  tables: [
-    {
-      name: 'DELIVERY',
-      products: [
-        { id: 40956, name: 'Bier', quantity: 4 },
-        { id: 38365, name: 'Coca Cola', quantity: 3 },
-        { id: 38288, name: 'Homemade Mini Loempias', quantity: 6 },
-      ],
-      sum: 86.4,
-    }
-  ],
-};
-
-const DataProvider = ({ children, isTest = false }: Props) => {
+const DataProvider = ({ children, mock }: Props) => {
 
   const [state, setData] = useState<State>(initialState);
 
@@ -90,8 +74,8 @@ const DataProvider = ({ children, isTest = false }: Props) => {
   }
 
   useEffect(() => {
-    if (isTest) {
-      setData(mockState);
+    if (mock) {
+      setData(mock);
     } else {
       getData();
     }

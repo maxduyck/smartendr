@@ -7,7 +7,7 @@ const Layout = () => {
   const data = useData();
 
   return (<>
-    <Styled.Header>
+    <Styled.Header data-test="header">
       Pending orders: {data?.tables.length}
     </Styled.Header>
     <Styled.Body>

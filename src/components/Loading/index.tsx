@@ -7,14 +7,14 @@ const Loading = () => {
 
   return (
     <Styled.Wrapper>
-      {!data?.isReady && <Styled.Loader />}
+      {!data?.isReady && <Styled.Loader data-test="loader" />}
       {data?.isReady && data?.isError && (
-        <Styled.Error>
+        <Styled.Error data-test="error">
           ⚠ An error occurred. Please try again shortly
         </Styled.Error>
       )}
     </Styled.Wrapper>
-  )
+  );
 };
 
 export default Loading;
