@@ -11,6 +11,8 @@ Assessment for job application (front end developer)
   npm start
 ```
 
+The project was developed using Node v20.10.0 and NPM v10.2.3
+
 ## Testing
 
 The unit tests are using Cypress framework (Component Testing)
