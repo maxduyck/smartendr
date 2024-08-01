@@ -5,15 +5,27 @@ import { Styled } from './style';
 
 const Grid = () => {
   const data = useData();
+
+  let columns = [];
+  if (data?.tables.length) {
+    for (let i = 0; i < data.tables.length; i += 2) {
+      columns.push(data.tables.slice(i, i + 2));
+    }
+  }
+
   return (
     <Styled.Container>
-      {data?.tables?.map(({ name, products, sum }) => (
-        <Table
-          key={name}
-          name={name}
-          products={products}
-          sum={sum}
-        />
+      {columns.map((items, i) => (
+        <Styled.Column key={i}>
+          {items.map(({ name, products, sum }) => (
+            <Table
+              key={name}
+              name={name}
+              products={products}
+              sum={sum}
+            />
+          ))}
+        </Styled.Column>
       ))}
     </Styled.Container>
   );

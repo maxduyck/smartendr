@@ -6,10 +6,7 @@ export const Styled = {
     border: 1px solid #e9eaf4;
     border-radius: 5px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, .5);
-    display: inline-block;
-    margin: 0 10px 20px;
-    vertical-align: top;
-    width: 300px;
+    margin-bottom: 1em;
   `,
   Label: styled.span`
     display: block;
@@ -32,6 +29,12 @@ export const Styled = {
   Product: styled.div`
     display: flex;
   `,
+  Quantity: styled.span`
+    display: block;
+    margin-right: .5em;
+    text-align: right;
+    width: 20px;
+  `,
   Sum: styled.div`
     background-color: #f0f0f0;
     border-bottom-left-radius: 5px;
@@ -41,10 +44,17 @@ export const Styled = {
     justify-content: space-between;
     padding: .5em 1em;
   `,
-  Quantity: styled.span`
-    display: block;
-    margin-right: .5em;
-    text-align: right;
-    width: 20px;
+  Toggle: styled.button`
+    background: none;
+    border: 0;
+    color: #1991ff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px 0 10px;
+    width: 100%;
+
+    &:hover {
+      color: #0768c2;
+    }
   `,
 };

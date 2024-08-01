@@ -7,7 +7,7 @@ export const Styled = {
     bottom: 0;
     left: 0;
     overflow: auto;
-    padding: 1em;
+    padding: 1em .5em;
     position: absolute;
     right: 0;
     top: ${headerHeight};
