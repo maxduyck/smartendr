@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Styled } from './style';
 
-type Props = Table;
+interface Props extends Table {
+  colorIndex: number;
+}
 
-const Table = ({ name, products, sum }: Props) => {
+const Table = ({ colorIndex, name, products, sum }: Props) => {
   const isExtendable = products.length > 10;
   const [isShrunk, setIsShrunk] = useState(isExtendable);
   
   return (
     <Styled.Card>
-      <Styled.Name>{name}</Styled.Name>
+      <Styled.Name colorIndex={colorIndex}>{name}</Styled.Name>
       <Styled.List>
         {products.slice(0, isShrunk ? 10 : products.length).map(({ name, quantity }) => (
           <Styled.Product key={name}>

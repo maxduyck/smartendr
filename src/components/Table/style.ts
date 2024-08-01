@@ -1,5 +1,13 @@
 import styled from '@emotion/styled';
 
+const colorPanel = [
+  '#ffdcf9',
+  '#dce8ff',
+  '#dcffe1',
+  '#fffdba',
+  '#fcddca',
+];
+
 export const Styled = {
   Card: styled.div`
     background-color: #ffffff;
@@ -18,14 +26,16 @@ export const Styled = {
     gap: .5em;
     padding: .5em;
   `,
-  Name: styled.div`
-    background-color: #e9eaf4;
+  Name: styled.div(({ colorIndex }: {
+    colorIndex: number,
+  }) => `
+    background-color: ${colorPanel[colorIndex]};
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     font-weight: 700;
     padding: 15px 0;
     text-align: center;
-  `,
+  `),
   Product: styled.div`
     display: flex;
   `,

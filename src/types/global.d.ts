@@ -65,4 +65,8 @@ declare global {
     products: FlatOrder[];
     sum: number;
   }
+
+  interface IndexedTable extends Table {
+    index: number;
+  }
 }

@@ -8,18 +8,22 @@ const Grid = () => {
 
   let columns = [];
   if (data?.tables.length) {
-    for (let i = 0; i < data.tables.length; i += 2) {
-      columns.push(data.tables.slice(i, i + 2));
+    const tables = data.tables.map((table, index) => ({ ...table, index }));
+    for (let i = 0; i < tables.length; i += 2) {
+      columns.push(tables.slice(i, i + 2));
     }
   }
+
+  const mapIndex = (index: number, splitIndex: number) => index % splitIndex;
 
   return (
     <Styled.Container>
       {columns.map((items, i) => (
         <Styled.Column key={i}>
-          {items.map(({ name, products, sum }) => (
+          {items.map(({ index, name, products, sum }) => (
             <Table
               key={name}
+              colorIndex={mapIndex(index, 5)}
               name={name}
               products={products}
               sum={sum}
