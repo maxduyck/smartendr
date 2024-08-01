@@ -10,6 +10,7 @@ export const groupProducts = (products: Product[]) => {
       allOrders.push(current);
     }
   });
+  
   return allOrders;
 };
 

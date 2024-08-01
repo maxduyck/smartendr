@@ -1,7 +1,7 @@
 import React, {
   createContext, useContext, useEffect, useState,
 } from 'react';
-import { splitTables } from './utils';
+import { splitTables } from '../utils/products';
 
 export type State = {
   isError: boolean;
@@ -22,13 +22,13 @@ const initialState: State = {
   tables: [],
 };
 
+const endpoint = 'https://staging.smartendr.be/app/api_get_orders?locations=23,12&timestamp=43399';
+
 const DataProvider = ({ children, mock }: Props) => {
 
   const [state, setData] = useState<State>(initialState);
 
   const getData = async () => {
-    const url = 'https://staging.smartendr.be/app/api_get_orders?locations=23,12&timestamp=43399';
-    // const url = 'https://staging.smartendr.be/app/api_get_orders?locations=23,12&timestamp=1700000000';
     const options: RequestInit = {
       headers: {
         Accept: 'application/json',
@@ -37,7 +37,7 @@ const DataProvider = ({ children, mock }: Props) => {
       method: 'GET',
     };
     try {
-      const response = await fetch(url, options);
+      const response = await fetch(endpoint, options);
       
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
@@ -47,8 +47,6 @@ const DataProvider = ({ children, mock }: Props) => {
 
       const tables: Table[] = splitTables(orders);
 
-      console.log('tables', tables);
-      
       setData({
         isError: false,
         isReady: true,
@@ -79,7 +77,7 @@ const DataProvider = ({ children, mock }: Props) => {
     } else {
       getData();
     }
-  }, []);
+  }, [mock]);
 
   return (
     <DataContext.Provider value={state as State}>
